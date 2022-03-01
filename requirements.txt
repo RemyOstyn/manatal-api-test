@@ -1,0 +1,8 @@
+Django>=4.0
+psycopg2>=2.8
+djangorestframework
+django-cors-headers
+shortuuid
+drf-nested-routers
+faker
+django-filter
