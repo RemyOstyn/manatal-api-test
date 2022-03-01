@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['djangoapi.team-cactus.com','127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS = ["https://djangoapi.team-cactus.com", "https://www.djangoapi.team-cactus.com"]
+
 
 # Application definition
 
