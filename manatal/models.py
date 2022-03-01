@@ -19,7 +19,7 @@ class Student(models.Model):
     school_id =  models.ForeignKey(School, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30, blank=False, default='')
     last_name = models.CharField(max_length=30, blank=False, default='')
-    age = models.PositiveSmallIntegerField(blank=True)
+    age = models.PositiveSmallIntegerField(null=True)
     identification = models.CharField(primary_key=True, max_length=20, blank=False, editable=False)
 
     def save(self, **kwargs):
