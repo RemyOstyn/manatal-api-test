@@ -3,15 +3,16 @@ from django.urls import include, path
 from rest_framework_nested import routers
 from manatal import views
 
+# Basic routers for Schools and Students endpoints
 router = routers.DefaultRouter()
 router.register(r'schools', views.SchoolViewSet)
 router.register(r'students', views.StudentViewSet)
 
+# Nested routers to lookup for student in specific school
 school_router = routers.NestedSimpleRouter(router, r'schools', lookup='schools')
 school_router.register(r'students', views.StudentViewSet, basename='school-students')
 
-# Wire up our API using automatic URL routing.
-# Additionally, we include login URLs for the browsable API.
+# Include router URLs and login URLs
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),

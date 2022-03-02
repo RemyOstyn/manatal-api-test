@@ -2,8 +2,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 import shortuuid
 
-# Create your models here.
-
+# School class definition
 class School(models.Model):
     name = models.CharField(max_length=20, blank=False, default='')
     address = models.CharField(max_length=128, blank=True)
@@ -12,6 +11,7 @@ class School(models.Model):
     def students_count(self):
         return Student.objects.filter(school_id=self).count()
 
+    # Concatenate the name of the school and the current student count to easily see what schools are full when creating a Student
     def __str__(self):
         return f"{self.name} ({self.students_count()}/{self.students_capacity} students)"
 
@@ -22,6 +22,7 @@ class Student(models.Model):
     age = models.PositiveSmallIntegerField(null=True)
     identification = models.CharField(primary_key=True, max_length=20, blank=False, editable=False)
 
+    # First check if the school if full then generate a unique uuid
     def save(self, **kwargs):
         if self.school_id.students_count() == self.school_id.students_capacity:
             raise ValidationError("The school is full")
