@@ -1,5 +1,11 @@
 # manatal-api-test
 
+The solution is hosted at https://djangoapi.team-cactus.com/
+username: admin
+password: Manatal@2021!
+
+Some data have been populated fith python faker library
+
 I chose to work with docker to facilitate the deployment on my server.
 
 * docker-compose.yml 
